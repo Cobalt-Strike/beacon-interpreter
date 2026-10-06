@@ -1,0 +1,14 @@
+{
+  "name": "beacon-interpreter-local",
+  "owner": {
+    "name": "Cobalt Strike"
+  },
+  "plugins": [
+    {
+      "name": "cobalt-strike-beacon-interpreter",
+      "source": "./",
+      "description": "Author, review, and troubleshoot Cobalt Strike Beacon Interpreter C scripts using bundled compatibility guidance, headers, and examples.",
+      "version": "0.1.0"
+    }
+  ]
+}

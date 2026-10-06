@@ -1,0 +1,33 @@
+{
+  "name": "cobalt-strike-beacon-interpreter",
+  "version": "0.1.0",
+  "description": "Author, review, and troubleshoot Cobalt Strike Beacon Interpreter C scripts using bundled compatibility guidance, headers, and examples.",
+  "author": {
+    "name": "Cobalt Strike"
+  },
+  "repository": "https://github.com/Cobalt-Strike/beacon-interpreter",
+  "license": "Apache-2.0",
+  "keywords": [
+    "cobalt-strike",
+    "beacon-interpreter",
+    "c",
+    "ffi"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cobalt Strike Beacon Interpreter",
+    "shortDescription": "Beacon Interpreter C scripts",
+    "longDescription": "Write and review Beacon Interpreter C scripts with guidance on packed arguments, supported language features, native FFI, and the supplied header set.",
+    "developerName": "Cobalt Strike",
+    "category": "Security",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $cobalt-strike-beacon-interpreter to explain the bundled interpreter demo.",
+      "Use $cobalt-strike-beacon-interpreter to review this C script for interpreter compatibility.",
+      "Use $cobalt-strike-beacon-interpreter to write a script that reads one packed string argument and prints it."
+    ]
+  }
+}
