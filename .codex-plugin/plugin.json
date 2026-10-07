@@ -1,6 +1,6 @@
 {
   "name": "cobalt-strike-beacon-interpreter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Author, review, and troubleshoot Cobalt Strike Beacon Interpreter C scripts using bundled compatibility guidance, headers, and examples.",
   "author": {
     "name": "Cobalt Strike"
@@ -20,6 +20,8 @@
     "longDescription": "Write and review Beacon Interpreter C scripts with guidance on packed arguments, supported language features, native FFI, and the supplied header set.",
     "developerName": "Cobalt Strike",
     "category": "Security",
+    "logo": "./assets/cobalt-strike-beacon-interpreter.png",
+    "composerIcon": "./assets/cobalt-strike-beacon-interpreter.png",
     "capabilities": [
       "Read",
       "Write"

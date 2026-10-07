@@ -20,6 +20,8 @@ AUTHORED = (
     "compatibility.json", "docs/development.md", "tools/plugin.py",
     "tests/test_plugin.py", f"{SKILL.as_posix()}/SKILL.md",
     f"{SKILL.as_posix()}/references/validation.md",
+    "assets/cobalt-strike-beacon-interpreter.png",
+    "assets/cobalt-strike-beacon-interpreter.prompt.txt",
 )
 
 
@@ -208,6 +210,14 @@ def check(root):
         if not contained(root, relative).is_file():
             raise ValueError(f"Missing package file: {relative}")
     packaged = {contained(root, relative).resolve() for relative in paths}
+    interface = read_manifest(root)["extensions"]["com.openai"]["interface"]
+    for field in ("logo", "composerIcon", "logoDark", "composerIconDark"):
+        if field in interface:
+            relative = interface[field]
+            if not isinstance(relative, str) or not relative.startswith("./assets/"):
+                raise ValueError(f"{field} must reference a packaged asset")
+            if contained(root, relative).resolve() not in packaged:
+                raise ValueError(f"{field} is missing from the package: {relative}")
     for relative in paths:
         if relative.suffix == ".md":
             check_links(root, contained(root, relative), packaged)
@@ -224,7 +234,10 @@ def build(root):
             info.create_system = 3
             info.external_attr = 0o100644 << 16
             info.compress_type = zipfile.ZIP_DEFLATED
-            archive.writestr(info, normalized(contained(root, relative).read_bytes()))
+            data = contained(root, relative).read_bytes()
+            if relative.suffix in {".py", ".md", ".json", ".c", ".h", ".txt"} or relative.name == "LICENSE":
+                data = normalized(data)
+            archive.writestr(info, data)
     return output
 
 

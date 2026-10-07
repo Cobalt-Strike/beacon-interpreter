@@ -121,6 +121,16 @@ class PluginTests(unittest.TestCase):
         plugin.sync(self.root)
         self.assertEqual(plugin.build(self.root).read_bytes(), before)
 
+    def test_icon_survives_packaging_without_binary_normalization(self):
+        relative = "assets/cobalt-strike-beacon-interpreter.png"
+        source = (self.root / relative).read_bytes()
+        self.assertTrue(source.startswith(b"\x89PNG\r\n\x1a\n"))
+        with zipfile.ZipFile(plugin.build(self.root)) as archive:
+            self.assertEqual(archive.read(f"{plugin.NAME}/{relative}"), source)
+        interface = plugin.read_manifest(self.root)["extensions"]["com.openai"]["interface"]
+        self.assertEqual(interface["logo"], f"./{relative}")
+        self.assertEqual(interface["composerIcon"], interface["logo"])
+
 
 if __name__ == "__main__":
     unittest.main()
