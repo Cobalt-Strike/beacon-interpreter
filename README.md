@@ -1,78 +1,22 @@
 # Beacon Interpreter
 
-This repository contains support files and examples for developing Cobalt Strike
-Beacon Interpreter scripts. The portable `cobalt-strike-beacon-interpreter`
-skill helps authors write, review, and troubleshoot Interpreter C scripts in
-Codex and Claude Code. It bundles compatibility guidance, 34 interpreter
-headers, and a feature demo.
+This repository contains support files for developing Beacon Interpreter scripts.
 
-## Install locally
+- `interpreter-includes/`: copies of the C headers shipped with Cobalt Strike for Beacon Interpreter development, including Windows, BOF API, CRT, and internal helper declarations.
+- `interpreter_demo.c`: an example Beacon Interpreter script showing supported C features and native API calls.
+- `skills.md`: guidance for AI agents generating Beacon Interpreter compatible C scripts.
+- `situational_awareness/`: Ported examples from the TrustedSec Situational Awareness BOF repository to demonstrate execution under the Beacon Interpreter VM
 
-The repository contains a portable `plugin.json`, Codex and Claude compatibility
-manifests, and a one-plugin marketplace at `.claude-plugin/marketplace.json`.
-This marketplace location is also supported by Codex. The source path points to
-this repository's root, so it works from a checkout or an extracted package.
+## Export the interpreter resources
 
-For Codex, run these commands from the repository root:
+Use Python and Git to export the guide, headers, demo, and license for a reviewed
+commit. Run this in a checkout that contains the revision, replacing `COMMIT_SHA`
+with its full SHA.
 
 ```sh
-codex plugin marketplace add .
-codex plugin add cobalt-strike-beacon-interpreter@beacon-interpreter-local
+python tools/export_skill_resources.py COMMIT_SHA beacon-interpreter-resources.zip
 ```
 
-Start a new session and invoke `$cobalt-strike-beacon-interpreter`.
-
-For a Claude Code development session, run from the repository root:
-
-```sh
-claude --plugin-dir .
-```
-
-For a persistent Claude Code installation, use these commands inside Claude Code,
-replacing the path with this checkout's absolute path:
-
-```text
-/plugin marketplace add /absolute/path/to/beacon-interpreter
-/plugin install cobalt-strike-beacon-interpreter@beacon-interpreter-local
-```
-
-Claude Code namespaces the skill as
-`/cobalt-strike-beacon-interpreter:cobalt-strike-beacon-interpreter`.
-For clients that install individual skills, copy the complete
-[`skills/cobalt-strike-beacon-interpreter/`](skills/cobalt-strike-beacon-interpreter/)
-directory to the client's supported skill location.
-
-## Use
-
-Example requests:
-
-- Explain the bundled interpreter demo.
-- Review this script for Beacon Interpreter compatibility.
-- Write a script that reads one packed string argument and prints it.
-
-The skill's [entry point](skills/cobalt-strike-beacon-interpreter/SKILL.md) links
-to its detailed references. It provides authoring guidance and local resources;
-it does not install or connect to Cobalt Strike.
-
-Running generated scripts requires a Cobalt Strike installation with Beacon
-Interpreter support and a compatible Team Server header set. The source
-snapshot does not identify a Cobalt Strike release, and no runtime-tested
-version or architecture is currently claimed. See
-[`compatibility.json`](compatibility.json) and the bundled
-[provenance](skills/cobalt-strike-beacon-interpreter/references/provenance.json).
-
-## Existing development resources
-
-- [`interpreter-includes/`](interpreter-includes/): the supplied interpreter headers.
-- [`interpreter_demo.c`](interpreter_demo.c): supported C features and native API calls.
-- [`skills.md`](skills.md): the full interpreter compatibility guide.
-- `situational_awareness/`: ports from TrustedSec Situational Awareness BOFs.
-  The ports carry the separate license in `situational_awareness/LICENSE`.
-
-The headers, demo, and compatibility guide are the maintained sources for the
-copies distributed inside the skill. See [maintenance and packaging](docs/development.md)
-for synchronization, checks, ZIP builds, and the SpecterOps import.
-
-The skill is licensed under [Apache-2.0](LICENSE). Report plugin defects in the
-[source repository](https://github.com/Cobalt-Strike/beacon-interpreter/issues),
-including the plugin version and a minimal reproducible example.
+The ZIP uses the repository paths and records the resolved commit in its ZIP
+comment. It reads the committed files, so a refresh can be reproduced from the
+same source revision.
