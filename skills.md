@@ -43,7 +43,7 @@ Treat script authoring as regular C in most day-to-day coding:
 - same practical use of structs, enums, unions, typedefs, macros, and function calls
 - same decomposition patterns (helpers, recursion, forward declarations)
 
-The `vm_feature_demo.c` script demonstrates this “normal C first” model with:
+The `interpreter_demo.c` script demonstrates this “normal C first” model with:
 - macros and expressions
 - recursion and helper functions
 - struct/enum/union usage
