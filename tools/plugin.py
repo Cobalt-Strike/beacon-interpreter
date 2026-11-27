@@ -124,7 +124,8 @@ def generated_files(root):
         raise ValueError("runtime_validation must be a list of recorded results")
     provenance["hash_format"] = "sha256 with CRLF normalized to LF"
     provenance["files"] = {}
-    for destination, source in sorted(resources.items()):
+    for destination in sorted(resources, key=lambda path: path.as_posix().casefold()):
+        source = resources[destination]
         data = contained(root, source).read_bytes()
         generated[SKILL / destination] = data
         provenance["files"][destination.as_posix()] = {
@@ -188,8 +189,8 @@ def sync(root):
 
 
 def package_paths(root):
-    return sorted(set(map(Path, AUTHORED)) | set(source_headers(root)) |
-                  set(generated_files(root)))
+    paths = set(map(Path, AUTHORED)) | set(source_headers(root)) | set(generated_files(root))
+    return sorted(paths, key=lambda path: path.as_posix().casefold())
 
 
 def check(root):
