@@ -82,6 +82,7 @@ def read_manifest(root):
 
 
 def source_headers(root):
+    root = root.resolve()
     return sorted(path.relative_to(root) for path in
                   contained(root, "interpreter-includes").glob("*.h"))
 
@@ -194,6 +195,7 @@ def package_paths(root):
 
 
 def check(root):
+    root = root.resolve()
     generated = generated_files(root)
     for relative, expected in generated.items():
         path = contained(root, relative)

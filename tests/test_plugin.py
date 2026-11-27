@@ -113,7 +113,7 @@ class PluginTests(unittest.TestCase):
                 archive.namelist(),
             )
             archive.extractall(extracted)
-        plugin.check(extracted / plugin.NAME)
+        plugin.check(extracted / plugin.NAME / ".." / plugin.NAME)
 
     def test_line_endings_do_not_change_provenance(self):
         header = self.root / "interpreter-includes/beacon.h"
