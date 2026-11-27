@@ -1,9 +1,10 @@
 # Beacon Interpreter
 
-A standalone skill plugin for authoring, reviewing, and troubleshooting Cobalt
-Strike Beacon Interpreter C scripts. It bundles compatibility guidance, 34
-interpreter headers, and a feature demo. The portable skill is named
-`cobalt-strike-beacon-interpreter`.
+This repository contains support files and examples for developing Cobalt Strike
+Beacon Interpreter scripts. The portable `cobalt-strike-beacon-interpreter`
+skill helps authors write, review, and troubleshoot Interpreter C scripts in
+Codex and Claude Code. It bundles compatibility guidance, 34 interpreter
+headers, and a feature demo.
 
 ## Install locally
 
@@ -62,16 +63,16 @@ version or architecture is currently claimed. See
 
 ## Existing development resources
 
-The original paths remain available:
-
 - [`interpreter-includes/`](interpreter-includes/): the supplied interpreter headers.
 - [`interpreter_demo.c`](interpreter_demo.c): supported C features and native API calls.
 - [`skills.md`](skills.md): the full interpreter compatibility guide.
+- `situational_awareness/`: ports from TrustedSec Situational Awareness BOFs.
+  The ports carry the separate license in `situational_awareness/LICENSE`.
 
-These files are the maintained sources for the copies distributed inside the
-skill. See [maintenance and packaging](docs/development.md) for synchronization,
-checks, ZIP builds, and the future SpecterOps migration.
+The headers, demo, and compatibility guide are the maintained sources for the
+copies distributed inside the skill. See [maintenance and packaging](docs/development.md)
+for synchronization, checks, ZIP builds, and the SpecterOps import.
 
-Licensed under [Apache-2.0](LICENSE). Report plugin defects in the
+The skill is licensed under [Apache-2.0](LICENSE). Report plugin defects in the
 [source repository](https://github.com/Cobalt-Strike/beacon-interpreter/issues),
 including the plugin version and a minimal reproducible example.

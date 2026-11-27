@@ -8,6 +8,9 @@ Most of the examples here are based on, inspired by, and/or directly ported from
 
 The scripts in this folder were adapted to fit the Beacon Interpreter execution model and header surface.
 
+NOTE: These scripts are covered under the GPLv2 license (see LICENSE file in this folder) consistent with the license
+provided in the TrustedSec repository listed above.
+
 ## Examples
 
 - `adv_audit_policies.c`: Searches Group Policy audit configuration files and prints discovered advanced audit policy data.
