@@ -8,7 +8,8 @@ MCP server, credentials, or network connection.
 
 Maintain `plugin.json`, `compatibility.json`, the root `skills.md`,
 `interpreter_demo.c`, `interpreter-includes/`, and `LICENSE` as the source files.
-Edit the skill's `SKILL.md` and `references/validation.md` directly.
+Edit the skill's `SKILL.md`, `agents/openai.yaml`, and `references/validation.md`
+directly.
 When adding another authored resource, add it to the `AUTHORED` file list in
 `tools/plugin.py` so it is included in release archives.
 
@@ -57,20 +58,18 @@ and the build. Manifests and the marketplace obtain the same version from that
 source. Refresh the installed plugin through its client's plugin manager and
 start a new session after changing it.
 
-## Moving the skill into SpecterOps/skills
+## Importing the skill into SpecterOps/skills
 
-The eventual destination is
-`plugins/c2-cobaltstrike/skills/cobalt-strike-beacon-interpreter/`. Copy the entire
-skill directory, including its license and provenance. Its links do not depend
-on this repository's root or the standalone plugin name. At that point, choose
-the upstream skill resources as the maintained source or retain an explicit
-import process; do not leave two independently edited copies.
+This repository is the source for the published skill. Export the complete
+`skills/cobalt-strike-beacon-interpreter/` directory from a reviewed upstream
+commit with `git archive`. Import it into
+`plugins/c2-cobaltstrike/skills/cobalt-strike-beacon-interpreter/` and record the
+full source commit in the SpecterOps plugin README. The bundled license,
+provenance, and skill-picker metadata travel with the directory.
 
-Update the existing `c2-cobaltstrike` plugin's ownership, skill listings,
-descriptions, prompts, and release metadata according to its current conventions.
-Keep this repository's standalone manifests and marketplace here. Regenerate
-the applicable upstream catalogs/inventory and run `just check` using the
-upstream toolchain. Follow the current
+For updates, make changes here, run `sync` and the package checks, and import
+from the new commit. In SpecterOps, update the plugin version and regenerate the
+catalog and inventory. Follow the
 [SpecterOps contribution guide](https://github.com/SpecterOps/skills/blob/main/CONTRIBUTING.md).
 
 ## Packaging references

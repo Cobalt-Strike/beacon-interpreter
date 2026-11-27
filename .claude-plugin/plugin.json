@@ -1,6 +1,6 @@
 {
   "name": "cobalt-strike-beacon-interpreter",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Author, review, and troubleshoot Cobalt Strike Beacon Interpreter C scripts using bundled compatibility guidance, headers, and examples.",
   "author": {
     "name": "Cobalt Strike"

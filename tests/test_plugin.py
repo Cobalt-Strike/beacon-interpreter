@@ -108,6 +108,10 @@ class PluginTests(unittest.TestCase):
             self.assertFalse(any(name.endswith("/.env") for name in archive.namelist()))
             self.assertIn(f"{plugin.NAME}/.codex-plugin/plugin.json", archive.namelist())
             self.assertIn(f"{plugin.NAME}/.claude-plugin/plugin.json", archive.namelist())
+            self.assertIn(
+                f"{plugin.NAME}/{plugin.SKILL.as_posix()}/agents/openai.yaml",
+                archive.namelist(),
+            )
             archive.extractall(extracted)
         plugin.check(extracted / plugin.NAME)
 

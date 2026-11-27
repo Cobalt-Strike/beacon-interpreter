@@ -19,9 +19,9 @@ AUTHORED = (
     "README.md", "LICENSE", "skills.md", "interpreter_demo.c", "plugin.json",
     "compatibility.json", "docs/development.md", "tools/plugin.py",
     "tests/test_plugin.py", f"{SKILL.as_posix()}/SKILL.md",
+    f"{SKILL.as_posix()}/agents/openai.yaml",
     f"{SKILL.as_posix()}/references/validation.md",
     "assets/cobalt-strike-beacon-interpreter.png",
-    "assets/cobalt-strike-beacon-interpreter.prompt.txt",
 )
 
 

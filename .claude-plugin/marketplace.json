@@ -8,7 +8,7 @@
       "name": "cobalt-strike-beacon-interpreter",
       "source": "./",
       "description": "Author, review, and troubleshoot Cobalt Strike Beacon Interpreter C scripts using bundled compatibility guidance, headers, and examples.",
-      "version": "0.1.1"
+      "version": "0.1.3"
     }
   ]
 }
